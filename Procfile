@@ -1,1 +1,1 @@
-web: gunicorn anime_app:app --log-level debug
+web: gunicorn anime_app.py

@@ -7,6 +7,7 @@ import base64
 import io
 from PIL import Image
 import numpy as np
+import os
 # from torchvision import transforms    
 
 import base64
@@ -54,25 +55,10 @@ def generate():
 
         response["image" + str(i)] = result
     
-    # response = {
-    #     'image': result
-    # }
-    template_test()
     return jsonify(response)
 
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
 
 
-# @app.route("/predict", methods =["POST"])
-# def predict():
-#     # message = request.get_json(force = True)
-#     # encoded = message['image']
-#     # decoded = base64.b64decode(encoded)
-#     # image = Image.open(io.BytesIO(decoded))
-#     # processed_image = preprocess_image(image, target_size=(224,224))
-#     image = model.predict()
-#     result = base64.b64encode(image)
-#     response = {
-#         'image': result
-#     }    
-#     return jsonify(response)
-#     # return request.get_json(force = True)
